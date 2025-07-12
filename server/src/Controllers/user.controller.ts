@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
+import { Document } from "mongoose";
 import { catchAsync } from "../Errors/catchAsync";
 import { AppError } from "../Errors/errorHandler";
 import { IUser, User } from "../Models/user.model";
-import { redis } from "../Redis/redis";
-import { Document } from "mongoose";
 
 interface UserRegistration extends IUser, Document {
 	name: string;
@@ -41,7 +40,6 @@ export const registerUser = catchAsync(
 			},
 		});
 		const token = user.getToken();
-		// await redis.set(user.id, JSON.stringify(user) as any);
 		res
 			.status(200)
 			.cookie("token", token, {
@@ -71,7 +69,6 @@ export const loginUser = catchAsync(
 			return next(new AppError(404, "Incorrect username or password"));
 
 		const token = user.getToken();
-		// await redis.set(user.id, JSON.stringify(user) as any);
 		setTimeout(() => {
 			res
 				.status(200)

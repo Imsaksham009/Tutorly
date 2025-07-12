@@ -189,7 +189,10 @@ export const getCourseDetailsWithSlug = catchAsync(
 		const { slug } = req.params;
 		if (!slug) return next(new AppError(404, "Please provide the course name"));
 
-		const course = await Course.findOne({ slug });
+		const course = await Course.findOne({ slug }).populate([
+			{ path: "instructorId", select: "name email" },
+			{ path: "sections" },
+		]);
 		if (!course) return next(new AppError(404, "Course not found"));
 
 		return res.status(200).json({
