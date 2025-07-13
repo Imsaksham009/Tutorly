@@ -6,14 +6,11 @@ import {
 	clearCourseStateAfterErrors,
 	getAllCoursesList,
 } from "../../reducers/coursesList/courseList.actions";
-import type {
-	Course,
-	CoursesListState,
-} from "../../reducers/coursesList/coursesList.reducer";
+import type { CoursesListState } from "../../reducers/coursesList/coursesList.reducer";
 import type { AppDispatch, RootState } from "../../store/store";
-import CourseCard from "../CourseCard";
+import CourseCard from "../Course/CourseCard";
 
-const Course: FC = () => {
+const HomePageCourses: FC = () => {
 	const dispatch: AppDispatch = useDispatch();
 	const courseList = useSelector(
 		(state: RootState) => state.coursesListReducer
@@ -66,4 +63,4 @@ const Course: FC = () => {
 	);
 };
 
-export default Course;
+export default HomePageCourses;

@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import type { AppDispatch, RootState } from "../../store/store";
 import { getCourseDetails } from "../../reducers/CourseDetail/courseDetail.action";
-import Loader from "../Loader";
 import toast from "react-hot-toast";
 import { clearCourseDetailError } from "../../reducers/CourseDetail/courseDetail.reducer";
 import { ChevronDown } from "lucide-react";
+import Loader from "../../components/Common/UI/Loader";
 
 const CoursePage: FC = () => {
 	const { slug } = useParams();

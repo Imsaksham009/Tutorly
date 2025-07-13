@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState, type FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { assets } from "../../assets/assets";
-import { logOutUser } from "../../reducers/user/auth.action";
-import type { userState } from "../../reducers/user/auth.reducer";
-import type { AppDispatch, RootState } from "../../store/store";
+import { assets } from "../../../assets/assets";
+import { logOutUser } from "../../../reducers/user/auth.action";
+import type { userState } from "../../../reducers/user/auth.reducer";
+import type { AppDispatch, RootState } from "../../../store/store";
+import Modal from "../UI/Modal";
+import LoginSignupComponent from "../../Auth/Auth";
 
 interface HeaderProps {}
 
@@ -17,6 +19,7 @@ const Header: HeaderComponent = () => {
 	);
 	const dispatch: AppDispatch = useDispatch();
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+	const [isLogInModalOpen, setIsLogInModalOpen] = useState<boolean>(false);
 	const menuRef = useRef<HTMLDivElement>(null);
 
 	// Close menu when clicking outside
@@ -93,14 +96,20 @@ const Header: HeaderComponent = () => {
 				) : (
 					<button
 						className="bg-purple-800 text-white px-5 py-2 rounded-full hover:bg-purple-900 transition duration-300 cursor-pointer"
-						onClick={() => navigate("/login")}
+						onClick={() => setIsLogInModalOpen(true)}
 					>
 						Login / Sign-Up
 					</button>
 				)}
 			</div>
+			<Modal
+				isOpen={isLogInModalOpen}
+				onClose={() => setIsLogInModalOpen(false)}
+			>
+				<LoginSignupComponent />
+			</Modal>
 			{/* <div className="md:hidden sm:gap-2 flex items-center text-gray-500">
-				{isLoggedIn ? (
+			{isLoggedIn ? (
 					<div className="hidden items-center gap-5">
 						<Link to="/become-educator">Become Educator</Link> |
 						<Link to="/my-enrollments" className="ml-1">

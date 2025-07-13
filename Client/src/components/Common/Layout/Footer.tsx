@@ -12,7 +12,7 @@ import {
 	Linkedin,
 	Youtube,
 } from "lucide-react";
-import { assets } from "../../assets/assets";
+import { assets } from "../../../assets/assets";
 
 const Footer: React.FC = () => {
 	const [email, setEmail] = useState("");

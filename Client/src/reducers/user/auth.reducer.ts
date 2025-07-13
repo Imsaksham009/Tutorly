@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { FormDataForSignUp, LoginInBody } from "../../components/Login";
+import type { LoginInBody } from "../../types/auth";
 
 interface User {
 	email: string;

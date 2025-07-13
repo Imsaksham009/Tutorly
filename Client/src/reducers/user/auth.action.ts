@@ -1,7 +1,7 @@
 import type { AxiosResponse } from "axios";
 import axios from "axios";
-import type { LoginInBody } from "../../components/Login";
 import type { AppDispatch } from "../../store/store";
+import type { LoginInBody } from "../../types/auth";
 import {
 	clearUserErrors,
 	loadUserFail,

@@ -1,7 +1,7 @@
 import { Fragment, type FC } from "react";
-import Hero from "../Hero";
-import Companies from "../Companies";
-import Course from "../Course";
+import Hero from "../components/Home/Hero";
+import Companies from "../components/Home/Companies";
+import Course from "../components/Home/HomeCourses";
 
 const Home: FC = () => {
 	return (

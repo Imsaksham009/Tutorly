@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { assets } from "../../assets/assets";
-import Search from "../SearchBar";
+import Search from "./SearchCourse";
 
 const Hero: FC = () => {
 	return (
